@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Starter Code</title>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta charset="utf-8">
+        <style>
+            html, body, #map-canvas {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+            }   
+        </style>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBsYVLaGllEz-XZYoF6xv_wqPsrG0k7oFs"></script>
+        <script src="https://mapstechnical.appspot.com/scripts/mapstechnical.js"></script>
+        <script src="https://mapstechnical.appspot.com/scripts/validate_styledmaps.js"></script>
+
+        <script>
+            var map;
+            var myMapStyles;            
+            function initialize() {
+                myMapStyles = [
+                    {
+                        //set the stylers for the road featureType, but only highways
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [
+                            { "visibility": "on" }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station.rail",
+                        "stylers": [
+                            { "weight": 1.8 },
+                            { "color": "#438080" },
+                            { "hue": "#ff0000" },
+                            { "visibility": "on" },
+                            { "saturation": 10 }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway.controlled_access",
+                        "stylers": [
+                            { "visibility": "on" },
+                            { "hue": "#ff0000" 
+                            }
+                        ]
+                    },
+                    { 
+                        //set the stylers for the water features
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [
+                            { "visibility": "on" }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station.rail",
+                        "stylers": [
+                            { "weight": 1.8 },
+                            { "color": "#438080" },
+                            { "hue": "#ff0000" },
+                            { "visibility": "on" },
+                            { "saturation": 10 }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "stylers": [
+                            { "visibility": "on" },
+                            { "hue": "#0800ff" },
+                            { "saturation": 100 },
+                            { "gamma": 6.98 },
+                            { "lightness": -87 }
+                        ]
+                    }
+                ];
+                map = new google.maps.Map(document.getElementById('map-canvas'), {
+                    center: new google.maps.LatLng(37.4,-122),
+                    zoom: 7,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                });
+                map.setOptions({styles: myMapStyles});
+            }
+        </script>
+
+    </head>
+    <body onload="initialize();">
+        <div id="map-canvas"></div>
+    </body>
+</html>
